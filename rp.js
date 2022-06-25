@@ -6,10 +6,15 @@
 function playerSelection(){
 
     let playerInput;
+
+    //continue loop until player inputs the correct values
     while (playerInput != "rock" && playerInput != "paper" && playerInput != "scissors"){
 
         playerInput = prompt("Rock, Paper, Scissors. Please Chose One: ");
+        if (playerInput == null) continue;
         playerInput = playerInput.toLowerCase();
+
+        //shorthand commands to simplify input
         switch (playerInput){
             case "r":
                 playerInput = "rock";
@@ -97,6 +102,26 @@ function getResults(playerI, computerI){
 
     //return the result
     return "The winner is the " + winner + " with a move of " + winningMove + " vs. " + losingMove;
+}
+
+function playGame(){
+    let maxRound = 0;
+    let resultText = "";
+    let winsComputer = 0;
+    let winsPlayer = 0;
+    let winner = "";
+
+    while (maxRound <= 0 || maxRound > 100){
+        maxRound = prompt("Input Number of Rounds to be Played (Max is 100)");
+    }
+
+    for(let i = 0; i < maxRound; i++){
+        console.log("Round " + (i+1));
+        resultText = getResults(playerSelection(), computerSelection());
+        console.log(resultText);
+    }
+
+
 }
 
 
