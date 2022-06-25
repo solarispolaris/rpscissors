@@ -49,6 +49,8 @@ function getResults(playerI, computerI){
     let winner = "";
     let winningMove = "";
     let losingMove = "";
+    //array for storing the return results
+    const result = [];
 
     //if both inputs are the same, return tied result
     if (playerI === computerI) return "Tied with a move of " + playerI + " vs. " + playerI; 
@@ -100,25 +102,49 @@ function getResults(playerI, computerI){
         losingMove = playerI;
     }
 
-    //return the result
-    return "The winner is the " + winner + " with a move of " + winningMove + " vs. " + losingMove;
+    //store the results 
+    result[0] = "The winner is the " + winner + " with a move of " + winningMove + " vs. " + losingMove;
+    result[1] = winner;
+
+    //return the result array
+    return result;
 }
 
 function playGame(){
     let maxRound = 0;
-    let resultText = "";
+    let results = [];
     let winsComputer = 0;
     let winsPlayer = 0;
     let winner = "";
+    
 
-    while (maxRound <= 0 || maxRound > 100){
+    //continues input prompt until input is between 0 and 101
+    while (maxRound <= 0 || maxRound > 100 || !Number.isInteger(parseInt(maxRound))){
         maxRound = prompt("Input Number of Rounds to be Played (Max is 100)");
     }
 
+    //loop for the number of rounds input
     for(let i = 0; i < maxRound; i++){
         console.log("Round " + (i+1));
-        resultText = getResults(playerSelection(), computerSelection());
-        console.log(resultText);
+        results = getResults(playerSelection(), computerSelection());
+
+        //increase the winner count of the player/computer side
+        if(results[1] === "player") winsPlayer++;
+        else winsComputer++;
+
+        console.log(results[0]);
+    }
+
+    //display the winner of the match
+
+    console.log("Computer: " + winsComputer);
+    console.log("Player: " + winsPlayer);
+    if (winsComputer === winsPlayer) console.log("No One Wins! THe game is tied.");
+    else{
+        if (winsComputer > winsPlayer) winner = "computer. Too Bad!";
+        else winner = "player. Congrats!";
+       
+        console.log("The winner is the " + winner);
     }
 
 
