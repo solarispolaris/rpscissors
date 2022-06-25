@@ -1,4 +1,30 @@
+
+
+
+
+
 function playerSelection(){
+
+    let playerInput;
+    while (playerInput != "rock" && playerInput != "paper" && playerInput != "scissors"){
+
+        playerInput = prompt("Rock, Paper, Scissors. Please Chose One: ");
+        playerInput = playerInput.toLowerCase();
+        switch (playerInput){
+            case "r":
+                playerInput = "rock";
+                break;
+            case "p":
+                playerInput = "paper";
+                break;
+            case "s":
+                playerInput = "scissors";
+        }
+    }
+
+    return playerInput;
+    
+
 
 }
 
