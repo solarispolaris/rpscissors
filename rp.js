@@ -4,17 +4,25 @@ function playerSelection(){
 
 function computerSelection(){
 
+    //get a random number from 0 to 99
+    let randomNum = Math.round(Math.random()*100);
+
+   if (randomNum >= 66) return "rock";
+   if (randomNum >= 33 && randomNum <= 66) return "paper";
+   return "scissors";
+
 }
 
 function getResults(playerI, computerI){
+
     let winner = "";
     let winningMove = "";
     let losingMove = "";
 
-    //check players's input against computer's input with a simple switchcase
+    //if both inputs are the same, return tied result
+    if (playerI === computerI) return "Tied with a move of " + playerI + " vs. " + playerI; 
 
-    if (playerI === computerI) return "Tied with a move of " + playerI; //if both inputs are the same, return tied result
-
+     //check players's input against computer's input with a simple switchcase
     switch (playerI){
         case "rock":
             switch (computerI){
@@ -48,7 +56,7 @@ function getResults(playerI, computerI){
             break;
     }
 
-    //return the result. If the winner string is empty, return an error
+    //if the winner string is empty, return an error
     if (winner === "") return "ERROR: Incorrect Input Recieved";
     
     //set the winning or losing move
@@ -56,10 +64,13 @@ function getResults(playerI, computerI){
         winningMove = playerI;
         losingMove = computerI;
     }
-    if (winner == "computer"){
+    else {
         winningMove = computerI;
         losingMove = playerI;
     }
 
+    //return the result
     return "The winner is the " + winner + " with a move of " + winningMove + " vs. " + losingMove;
 }
+
+
