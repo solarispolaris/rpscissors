@@ -5,18 +5,31 @@
         <meta charset="UTF-8">
         <title>Rock Paper Scissors</title>
         <link rel="stylesheet" href="styles.css">
-        <script src="rp.js"></script>
+        <script src="rp.js" defer></script>
     </head>
 
     <body>
         
+        <div class="playing-field">
+            <div class="game-info">
+                <p class="game-header">Rock, Paper, Scissors</p>
+                <p class="game-description">First to 5 Wins!</p>
+            </div>
+            <div class="buttons">
+                <button data-attack="rock" class="game-button"></button>
+                <button data-attack="paper" class="game-button"></button>
+                <button data-attack="scissors" class="game-button"></button>
+            </div>
+            <div class="game-results"></div>
+        </div>
+
+
+
+
+
         <script>
-            playGame();
+            
         </script>
-        
-        
-
-
         
     </body>
 
