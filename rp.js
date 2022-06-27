@@ -1,7 +1,7 @@
 //global values for RPS game progress
 let winsPlayer = 0;
 let winsComputer = 0;
-let currentRound = 0;
+let currentRound = 1;
 
 
 //return getResults(playerInput, computerSelection());
@@ -30,7 +30,11 @@ function getResults(playerI, computerI){
     const result = [];
 
     //if both inputs are the same, return tied result
-    if (playerI === computerI) return "Tied with a move of " + playerI + " vs. " + playerI; 
+    if (playerI === computerI){
+        result[0] = "Tied!";
+        result[1] = "Tied"
+        return  result;
+    } 
 
      //check players's input against computer's input with a simple switchcase
     switch (playerI){
@@ -87,10 +91,30 @@ function getResults(playerI, computerI){
     return result;
 }
 
-function progressGame(winnerText){
+function progressGame(result){
     
-    console.log(winnerText[0]);
+    const roundElement = document.querySelector(".round-info");
+    const playerWinsElement = document.querySelector(".wins-player");
+    const computerWinsElement = document.querySelector(".wins-computer");
+    const gameResultsElement = document.querySelector(".game-results");
+
+    //increase the round number
     currentRound++;
+    //check the winner of the round and increase their scores
+    switch(result[1]){
+        case "player":
+            winsPlayer++;
+            break;
+        case "computer":
+            winsComputer++;
+    }
+
+    //Update the text pertaining for the results
+    roundElement.textContent = `Round: ${currentRound}`;
+    playerWinsElement.textContent = `Player: ${winsPlayer}`;
+    computerWinsElement.textContent = `Computer: ${winsComputer}`;
+    gameResultsElement.textContent = result[0];
+
 }
 
 function startGame(){
