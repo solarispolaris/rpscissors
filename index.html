@@ -22,6 +22,7 @@
                 <input type="image" data-attack="scissors" class="game-button" src="images/scissors.jpg"></button>
             </div>
             <div class="game-results"></div>
+            <button class="begin-game">Start Game</button>
         </div>
 
 
@@ -29,12 +30,14 @@
 
         
         <script>
-            function getButtonInfo(e){
-                const attackKey = e.target.getAttribute("data-attack");
-                playGame(attackKey);
-            }
-            const buttonList = document.querySelectorAll(".game-button");
-            buttonList.forEach((btn) => { document.addEventListener('click', getButtonInfo, false)});
+            const gameBtn = document.querySelector(".begin-game");
+            gameBtn.addEventListener("click", (e) => {
+                //Replaces the text of the start button if its the first game
+                if(gameBtn.textContent === "Start Game") gameBtn.textContent = "Restart Game";
+                //starts the routines the game
+                startGame();
+            });
+            
         </script>
 
          
