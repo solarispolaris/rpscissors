@@ -136,7 +136,7 @@ function restartGame(){
     winsPlayer = 0;
     winsComputer = 0;
     //gives default values to update the game state
-    progressGame(["", "RESTART"]);
+    progressGame(["Make Your Move", "RESTART"]);
 }
 
 function endGame(){
