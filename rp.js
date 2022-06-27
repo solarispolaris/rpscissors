@@ -1,4 +1,14 @@
+//global values for RPS game progress
+let winsPlayer = 0;
+let winsComputer = 0;
+let currentRound = 0;
 
+
+//return getResults(playerInput, computerSelection());
+function getButtonInfo(e){
+    const attackKey = e.target.getAttribute("data-attack");
+    progressGame(getResults(attackKey, computerSelection()));
+}
 
 function computerSelection(){
 
@@ -77,12 +87,19 @@ function getResults(playerI, computerI){
     return result;
 }
 
-function playGame(playerInput){
-
-    console.log(getResults(playerInput, computerSelection())[0]);
-   
-
+function progressGame(winnerText){
+    
+    console.log(winnerText[0]);
+    currentRound++;
 }
+
+function startGame(){
+    const buttonList = document.querySelectorAll(".game-button");
+    buttonList.forEach((btn) => { btn.addEventListener('click', getButtonInfo, false)});
+   
+}
+
+
 
 
 
