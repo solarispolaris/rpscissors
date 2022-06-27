@@ -15,6 +15,7 @@
                 <p class="game-header">Rock, Paper, Scissors</p>
                 <p class="game-description">First to 5 Wins!</p>
             </div>
+            <div class="round-info">Round: 1</div>
             <div class="button-collection">
                 <input type="image" data-attack="rock" class="game-button" src="images/rock.png"></button>
                 <input type="image" data-attack="paper" class="game-button"src="images/paper.jpg"></button>
@@ -26,11 +27,17 @@
 
 
 
-
-        <script>
-            
-        </script>
         
+        <script>
+            function getButtonInfo(e){
+                const attackKey = e.target.getAttribute("data-attack");
+                playGame(attackKey);
+            }
+            const buttonList = document.querySelectorAll(".game-button");
+            buttonList.forEach((btn) => { document.addEventListener('click', getButtonInfo, false)});
+        </script>
+
+         
     </body>
 
 
