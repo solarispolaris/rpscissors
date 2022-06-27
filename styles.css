@@ -1,17 +1,53 @@
-p{
+* {
     margin: 0;
     padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
 }
+
+
+
+html{
+    height: 100%;
+}
+
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.wins-player, .wins-computer{
+    width: 200px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: oblique;
+    text-align: center;
+    
+    
+}
+.wins-player, .wins-computer, .footer{
+    background-color: rgb(205, 255, 255);
+}
+
 
 .game-field{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .playing-field{
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 400px;
+    background-color: rgb(154, 193, 228);
 }
 
 .game-header{
@@ -36,6 +72,7 @@ p{
     display: flex;
     flex-direction: column;
     align-items: center;
+   
 }
 
 .button-collection{
@@ -61,6 +98,7 @@ p{
     border-radius: 120%;
     border-color: black;
     padding: 10px;
+    background-color: white;
 
 }
 
@@ -71,5 +109,10 @@ p{
     font-weight: 600;
     border-radius: 15%;
     border-style: none;
+    margin-bottom: 20px;
+}
+
+.footer{
+    flex: 1;
 }
 
