@@ -3,6 +3,11 @@ p{
     padding: 0;
 }
 
+.game-field{
+    display: flex;
+    justify-content: space-between;
+}
+
 .playing-field{
     display: flex;
     flex-direction: column;
