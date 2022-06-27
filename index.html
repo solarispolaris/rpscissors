@@ -36,9 +36,15 @@
             const gameBtn = document.querySelector(".begin-game");
             gameBtn.addEventListener("click", (e) => {
                 //Replaces the text of the start button if its the first game
-                if(gameBtn.textContent === "Start Game") gameBtn.textContent = "Restart Game";
-                //starts the routines the game
-                startGame();
+                //Also adds listeners for the buttons
+                if(gameBtn.textContent === "Start Game" || gameBtn.textContent === "New Game") {
+                    gameBtn.textContent = "Restart Game";
+                    //starts the routines for the game
+                    newGame();
+                }
+                else{
+                    restartGame();
+                }
             });
             
         </script>

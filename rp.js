@@ -2,6 +2,7 @@
 let winsPlayer = 0;
 let winsComputer = 0;
 let currentRound = 1;
+let maxWins = 5;
 
 
 //return getResults(playerInput, computerSelection());
@@ -113,15 +114,41 @@ function progressGame(result){
     roundElement.textContent = `Round: ${currentRound}`;
     playerWinsElement.textContent = `Player: ${winsPlayer}`;
     computerWinsElement.textContent = `Computer: ${winsComputer}`;
-    gameResultsElement.textContent = result[0];
+    if(winsPlayer < maxWins && winsComputer < maxWins) gameResultsElement.textContent = result[0];
+    else{
+        let winner = (winsPlayer > winsComputer) ? "Player" : "Computer";
+        gameResultsElement.textContent = "The Winner of the Entire Match is the " + winner + "!!!";
+        endGame();
+    }
 
 }
 
-function startGame(){
+function newGame(){
     const buttonList = document.querySelectorAll(".game-button");
-    buttonList.forEach((btn) => { btn.addEventListener('click', getButtonInfo, false)});
+    buttonList.forEach((btn) => {btn.addEventListener('click', getButtonInfo)});
+    restartGame();
    
 }
+
+function restartGame(){
+    //sets all variables to the initial state
+    currentRound = 0;
+    winsPlayer = 0;
+    winsComputer = 0;
+    //gives default values to update the game state
+    progressGame(["", "RESTART"]);
+}
+
+function endGame(){
+    const gameBtn = document.querySelector(".begin-game");
+    const buttonList = document.querySelectorAll(".game-button");
+    //initialize
+    gameBtn.textContent = "New Game";
+    //remove the button listeners
+    buttonList.forEach((btn) => {btn.removeEventListener("click", getButtonInfo)});
+
+}
+    
 
 
 
